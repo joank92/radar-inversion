@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radar Inversion - Top 15</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <h1>Radar de inversion</h1>
+        <p>Top 15 por calidad + valoracion + consenso de analistas</p>
+      </header>
+
+      <section class="card">
+        <h2>Datos</h2>
+        <p>Sube tu CSV con estas columnas: <code>ticker,empresa,sector,market_cap_busd,moat,cagr_ventas_5y,ev_fcf,ev_ebit,pct_from_52w_low,analysts_buy_overweight_pct,street_target_upside_pct</code></p>
+        <input id="fileInput" type="file" accept=".csv" />
+        <p id="dataStatus">Usando dataset de ejemplo.</p>
+      </section>
+
+      <section class="card grid">
+        <label>Buscar
+          <input id="searchInput" type="text" placeholder="Ticker o empresa" />
+        </label>
+        <label>EV/FCF max
+          <input id="maxEvFcfInput" type="number" value="30" />
+        </label>
+        <label>EV/EBIT max
+          <input id="maxEvEbitInput" type="number" value="22" />
+        </label>
+        <label>% desde minimo 52w max
+          <input id="maxFromLowInput" type="number" value="45" />
+        </label>
+        <label>Buy+Overweight min %
+          <input id="minAnalystBuyInput" type="number" value="95" />
+        </label>
+        <label>Street target upside min %
+          <input id="minUpsideInput" type="number" value="20" />
+        </label>
+      </section>
+
+      <section class="card">
+        <div class="kpis">
+          <div><span>Universo</span><strong id="kpiUniverse">0</strong></div>
+          <div><span>Top mostrado</span><strong id="kpiTop">0</strong></div>
+          <div><span>Score medio</span><strong id="kpiAvg">0</strong></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Ticker</th>
+              <th>Empresa</th>
+              <th>Score</th>
+              <th>EV/FCF</th>
+              <th>EV/EBIT</th>
+              <th>%52w</th>
+              <th>Buy+OW</th>
+              <th>Upside</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
